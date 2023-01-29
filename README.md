@@ -10,7 +10,7 @@ This study investigates the impact of intergroup contact in informing feelings a
 
 ### Data Source Availability Statement
 
-Data used in this exercise were obtained through the American National Election Studies([(ANES)](https://electionstudies.org/data-center/anes-gss-2020-joint-study/) and General Social Survey([(GSS)](https://gss.norc.org/getthedata/Pages/SAS.aspx) websites. Access is restricted for statistical and research purposes. To downloadd the data, you must first create a free account on each data base.Thee terms of use for each dataset can be found on the organizations' websites.
+Data used in this exercise were obtained through the American National Election Studies[(ANES)](https://electionstudies.org/data-center/anes-gss-2020-joint-study/) and General Social Survey[(GSS)](https://gss.norc.org/getthedata/Pages/SAS.aspx) websites. Access is restricted for statistical and research purposes. To downloadd the data, you must first create a free account on each data base.Thee terms of use for each dataset can be found on the organizations' websites.
 
 ### Codebook and Data
 
@@ -35,27 +35,30 @@ Investigators, Rene Bautista, Jeremy Freese, Stephen L. Morgan, and Tom W. Smith
     <th>Description</th> 
   </tr>
   <tr>
-    <td>RRWM_Instr_CodeOutputs_YT.pdf</td>
-     <td>Document which contains instructions, tables, and logit regression output of original code           </td>
+    <td>gss2020panel_r1a.sas7bdat</td>
+     <td>Raw GSS 2016-2020 panel data as a SAS file</td>
   <tr/>
   <tr>
-    <td>RRWM_DataWrangling.R</td>
-    <td>Contains R code to process data for analysis</td>
+    <td>anes_timeseries_2020_gss_csv_20220408.csv</td>
+    <td>Raw ANES 2020 time-series data as a CSV file</td>
   </tr>
   <tr>
-    <td>RRWM_DescStats.R</td>
-    <td>Contains R code which creates frequency and proportion tables of predictor variables shown in RRWM_CodeOutputs_NZ.pdf</td>
+    <td>anes_gss2020data.csv</td>
+    <td>Merged ANES and GSS data with all variables</td>
    <tr>
-    <td>RRWM_CodeOutputs_NZ.pdf</td>
-    <td>Document which contains table and logit regression output of reproduced code–this differs from original code</td>
-  </tr>
+    <td>anes_gss2020clean.csv</td>
+    <td>Merged ANES and GSS data with variables of interest only</td>
   </tr>
   <tr>
-    <td>RRWM_Reprod.R</td>
-    <td>Contains R code which successfully reproduces the RRWM_Instr_CodeOutputs_YT.pdf outputs</td>
+    <td>EPA2023_analysis.R</td>
+    <td>R file consisting of data merging, cleaning, and analyses</td>
   <tr>  
-    <td>RRWM_RepDiffs.pdf</td>
-    <td>Document which outlines differences between original code and reproduced code and identifies minor value assignment error; classifies activity reproducibility</td>
+    <td>EPA2023_Environment.RData</td>
+    <td>RData file consisting of R studio environment necessary to complete the analyses in EPA2023_analysis.R</td>
+  </tr>
+  <tr>
+    <td>EPA2023_Proposal</td>
+    <td>Word document containing the long and short abstract of my EPA2023 submission</td>
   </tr>
 </table>
 
@@ -63,9 +66,19 @@ Investigators, Rene Bautista, Jeremy Freese, Stephen L. Morgan, and Tom W. Smith
 
 ### Pre-Processing the Data
 
-Once .csv file of data is downloaded, import file titled "gss_12M0025_E_2017_c_31_F1.csv" into R environment. For efficiency, rename the folder to your desired title (i.e. GSS_data) and select the columns of interest for analysis. These columns include: SEX, AGEGR10, MARSTAT, VISMIN, EHG3_01B, and TOTCHDC. To remove missing data, set any value >= 96 within the data frame equal to NA.
+For pre-processing and analyzing the data, I used the R packages readr, haven, dplyr, and tidyr. Visualizations were created using ggplot2. 
 
-Following the removal of missing values, conduct a brief recoding/one-hot encoding of the variables of focus for future logit regression. 
+To import the supplied RData file containing the necessary R environment, first open the EPA2023_analysis.R file. Next, navigate to the "environment" pane and select the icon in the top-left corner of the designated area. This allows you to load an R environment. Navigate to and open EPA2023_Environment.RData, which contains the raw ANES (anes) and GSS (gss) data, the merged raw data (gss_anes), and the pre-processed data (data).
+
+To start from scratch, import the ANES and GSS raw data files attached to this repository into your R Studio environment. Once this data is loaded into the environment, first filter the gss data frame so that the variable "anesid" is greater than 0. A non-zero positive integer in this variable indicates that a GSS participant was part of the ANES-GSS 2020 Joint Study. 
+
+Next, reorder the gss data frame so that "anesid" is organized numerically. Do the same reordering to the anes data frame such that the variable "V200001"(the same identifier found in the gss data frame) is organized numerically.
+
+Once each data frame is organized numerically by their ID, merge the data frames using the cbind() function. This data frame, called gss_anes, is attached to the repository as anes_gss2020data.csv.
+
+Using the gss_anes data frame, select the following dependent and control variables:
+
+**INSERT TABLE OF VARIABLES HERE**
 
 ### Software, Packages, and Applications for Wrangling and Analysis
 
