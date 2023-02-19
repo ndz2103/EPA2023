@@ -77,6 +77,18 @@ Investigators, Rene Bautista, Jeremy Freese, Stephen L. Morgan, and Tom W. Smith
     <td>References</td>
     <td>Git document of references used in EPA 2023 proposal and presentation</td>
   </tr>
+  <tr>
+    <td>equal_mar.plt.pdf</td>
+    <td>PDF file of marriage equality regression plot</td>
+  </tr>
+  <tr>
+    <td>feel_lgbt.plt.pdf</td>
+    <td>PDF file of LGBT favorability regression plot</td>
+  </tr>
+  <tr>
+    <td>cor_mat.plt.pdf</td>
+    <td>PDF file of correlation matrix of variables of interest</td>
+  </tr>
 </table>
 
 ## Instructions
