@@ -191,12 +191,12 @@ For regression modeling, create a data frame from the anes_gss2020clean data fra
 
 **Marriage Equality**
 1) linear regression: y = equal_mar and x's = relig_attend, poli, age, sex, race, and sexori.
-2) linear regression: y = equal_mar and x's = relig_attend*know_LGBT, poli*know_LGBT, age, sex, race, and sexori.
+2) linear regression: y = equal_mar and x's = (relig_attend X know_LGBT), (poli X know_LGBT), age, sex, race, and sexori.
 3) anova of both models. 
 
 **LGBT Favorability**
 1) linear regression: y = feel_LGBT and x's = relig_attend, poli, age, sex, race, and sexori.
-2) linear regression: y = feel_LGBT and x's = relig_attend*know_LGBT, poli*know_LGBT, age, sex, race, and sexori.
+2) linear regression: y = feel_LGBT and x's = (relig_attend X know_LGBT), (poli X know_LGBT), age, sex, race, and sexori.
 3) anove of both models. 
 
 ### Data Visualization
@@ -205,16 +205,16 @@ Import the ggplot2 package. Using the attach() function, specify the anes_gss202
 
 Personally, I was having difficulty using the predict() function to plot the regression lines of my models. As a last resort, I manually wrote the regression equations as a custom function and specified the variables. The regression equation followed the following pattern, where B1 and B2 are the coefficients of interest and k represents the controls. 
 
-y = intercept + B1*relig_attend + B2*poli + k
-y = intercept + B1*(relig_attend*know_LGBT) + B2*(poli*know_LGBT) + k
+y = intercept + B1(relig_attend) + B2(poli) + k
+y = intercept + B1(relig_attend X know_LGBT) + B2(poli X know_LGBT) + k
 
 Using the regression functions following the pattern above, input the variables in the order that their coefficients are shown so that the variable is paired with the proper coefficient. Using the 4 regression functions, create 4 new columns of predicted values. 
 
 **Marriage Equality**
 
-To plot the regression lines associated with marriage equality, use the ggplot() function and specify the x aesthetic as poli*know_LGBT and the y aesthetic as equal_mar. 
+To plot the regression lines associated with marriage equality, use the ggplot() function and specify the x aesthetic as the interaciton between poli and know_LGBT and the y aesthetic as equal_mar. 
 
-Using the geom_jitter() geometry, specify jitter width and height along with point characteristics. Then using the stat_smooth() geometry, specify the parameter geom as "line", the x aesthetic as poli*know_LGBT, and the y aesthetic as the predicted values of the non-interaction model. Finally, use the geom_smooth() geometry to plot the interaction model, specifying the x aesthetic poli*know_LGBT and y aesthetic of the corresponding interaction model's predicted values. In the geom_jitter, stat_smooth(), and geom_smooth() geometries, you can specify parameters like standard error, alpha, and color to preference. Additional geometries like labels and annotations can be added as well. 
+Using the geom_jitter() geometry, specify jitter width and height along with point characteristics. Then using the stat_smooth() geometry, specify the parameter geom as "line", the x aesthetic as the interaction between poli and know_LGBT, and the y aesthetic as the predicted values of the non-interaction model. Finally, use the geom_smooth() geometry to plot the interaction model, specifying the x aesthetic as the interaction between poli and know_LGBT and y aesthetic of the corresponding interaction model's predicted values. In the geom_jitter(), stat_smooth(), and geom_smooth() geometries, you can specify parameters like standard error, alpha, and color to preference. Additional geometries like labels and annotations can be added as well. 
 
 **LGBT Favorability**
 
