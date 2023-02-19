@@ -43,6 +43,10 @@ Investigators, Rene Bautista, Jeremy Freese, Stephen L. Morgan, and Tom W. Smith
     <td>Raw ANES 2020 time-series data as a CSV file</td>
   </tr>
   <tr>
+    <td>anes_gss2020rawdata.csv</td>
+    <td>Merged raw ANES and GSS data, needs processing</td>
+  </tr>
+  <tr>
     <td>anes_gss2020clean.csv</td>
     <td>Merged ANES and GSS data processed and cleaned</td>
   </tr>
