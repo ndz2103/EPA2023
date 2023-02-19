@@ -35,14 +35,6 @@ Investigators, Rene Bautista, Jeremy Freese, Stephen L. Morgan, and Tom W. Smith
     <th>Description</th> 
   </tr>
   <tr>
-    <td>gss2020panel_r1a.sas7bdat</td>
-     <td>Raw GSS 2016-2020 panel data as a SAS file</td>
-  <tr/>
-  <tr>
-    <td>anes_timeseries_2020_gss_csv_20220408.csv</td>
-    <td>Raw ANES 2020 time-series data as a CSV file</td>
-  </tr>
-  <tr>
     <td>anes_gss2020rawdata.csv</td>
     <td>Merged raw ANES and GSS data, needs processing</td>
   </tr>
